@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://xhfqci5yo2r"]
+
+[ext_resource type="PackedScene" uid="uid://bu80st6dhcnla" path="res://scenes/controlled_camera.tscn" id="1_dbdim"]
+
+[node name="CameraController3" instance=ExtResource("1_dbdim")]
+script = null

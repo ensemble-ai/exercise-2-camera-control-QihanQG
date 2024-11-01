@@ -1,0 +1,71 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4xat708gxliu"]
+
+[sub_resource type="GDScript" id="GDScript_0qrws"]
+script/source = "class_name AutoscrollCamera
+extends CameraControllerBase
+
+@export var top_left: Vector2  # The top left corner of the frame border box
+@export var bottom_right: Vector2  # The bottom right corner of the frame border box
+@export var autoscroll_speed: Vector3 = Vector3(1, 0, 1)  # Scroll speed on x and z axes
+
+# Called when the node enters the scene
+func _ready() -> void:
+	if target == null:
+		print(\"Target not set! Make sure the target is assigned in the Inspector.\")
+		return
+	
+	global_position = target.global_position  # Set the initial position
+
+# Called every frame
+func _process(delta: float) -> void:
+	if !current or target == null:
+		return
+
+	# Update the camera position based on autoscroll speed
+	global_position += autoscroll_speed * delta
+
+	# Handle player interaction with the frame
+	handle_player_inside_frame()
+
+	# Draw the frame border box if draw_camera_logic is true
+	if draw_camera_logic:
+		draw_frame_border()
+
+	super(delta)
+
+# Function to handle player movement inside the frame
+func handle_player_inside_frame() -> void:
+	var tpos = target.global_position
+
+	# Left edge check - if the player is touching the left edge of the frame, push forward
+	if tpos.x <= global_position.x + top_left.x:
+		target.global_position.x = global_position.x + top_left.x + 0.1  # Push player forward slightly
+
+# Function to draw the frame border box when draw_camera_logic is true
+func draw_frame_border() -> void:
+	var color = Color(1, 1, 1)  # White border for visualization
+
+	# Convert the 2D top_left and bottom_right points to 3D space
+	var top_left_3d = Vector3(global_position.x + top_left.x, target.global_position.y, global_position.z + top_left.y)
+	var bottom_right_3d = Vector3(global_position.x + bottom_right.x, target.global_position.y, global_position.z + bottom_right.y)
+
+	# Draw the top and bottom borders
+	get_viewport().debug_draw_line(top_left_3d, Vector3(bottom_right_3d.x, top_left_3d.y, top_left_3d.z), color)
+	get_viewport().debug_draw_line(Vector3(top_left_3d.x, top_left_3d.y, bottom_right_3d.z), bottom_right_3d, color)
+
+	# Draw the left and right borders
+	get_viewport().debug_draw_line(top_left_3d, Vector3(top_left_3d.x, top_left_3d.y, bottom_right_3d.z), color)
+	get_viewport().debug_draw_line(Vector3(bottom_right_3d.x, top_left_3d.y, top_left_3d.z), bottom_right_3d, color)
+"
+
+[node name="autscroll" type="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 1, 0)
+script = SubResource("GDScript_0qrws")
+top_left = null
+bottom_right = null
+autoscroll_speed = null
+dist_above_target = null
+zoom_speed = null
+min_zoom = null
+max_zoom = null
+draw_camera_logic = null
