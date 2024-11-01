@@ -15,7 +15,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if !current:
 		return
-		
 	if draw_camera_logic:
 		draw_logic()
 	
@@ -39,8 +38,6 @@ func _process(delta: float) -> void:
 	global_position = frame_position
 	rotation_degrees = Vector3(270, 0, 0)	
 	super(delta)
-
-
 
 func draw_logic() -> void:
 	var mesh_instance := MeshInstance3D.new()
