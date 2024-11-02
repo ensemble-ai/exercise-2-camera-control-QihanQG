@@ -51,7 +51,6 @@ func _physics_process(delta: float) -> void:
 		optimal_position.z = tpos.z - target_distance.y
 	
 	# Apply smoothed movement (keeping Y unchanged)
-	var old_pos = global_position
 	global_position = optimal_position
 	
 

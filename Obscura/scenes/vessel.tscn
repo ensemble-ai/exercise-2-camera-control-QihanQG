@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://dtm13sp1jsrwi"]
+[gd_scene load_steps=12 format=3 uid="uid://dtm13sp1jsrwi"]
 
+[ext_resource type="Script" path="res://scripts/vessel.gd" id="1_gvlq5"]
 [ext_resource type="AudioStream" uid="uid://dawegxxwk8pqb" path="res://assets/audio/LASRBeam_Plasma Loop_01.wav" id="3_6xqm4"]
 [ext_resource type="AudioStream" uid="uid://df4yj8byubv05" path="res://assets/audio/EXPLDsgn_Explosion Rumble Distorted_01.wav" id="4_0msye"]
 [ext_resource type="Script" path="res://scripts/util/gpu_particle_fix.gd" id="4_y1eh5"]
@@ -37,6 +38,7 @@ stream_0/stream = ExtResource("4_0msye")
 
 [node name="Vessel" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.238204, 0)
+script = ExtResource("1_gvlq5")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.1, 0, 0, 0, 0.5, 0, 0, 0)
