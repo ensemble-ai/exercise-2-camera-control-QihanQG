@@ -26,7 +26,7 @@ var previous_movement_direction: Vector3 = Vector3.ZERO
 var time_since_direction_change: float = 0.0
 var is_locked_on_target: bool = false
 
-#Threshold for sudden direction changes affecting camera movement. If exceeded, the camera reduces its lead distance to lock back onto the target.
+#Threshold for sudden direction changes affecting camera movement. If exceeded, the camera gradually locks back onto the target.
 const direction_change_sensitivity = deg_to_rad(80.0)  
 
 func _ready() -> void:
@@ -49,15 +49,14 @@ func _physics_process(delta: float) -> void:
 		sustained_speed = lerp(sustained_speed, target_speed, delta * (camera_drag * 2))
 	
 	var movement_direction = Vector2.ZERO
-	
-	# Calculate movement direction based on speed/input.
+
 	if target_speed > start_move:
 		movement_direction = Vector2(target.velocity.x, target.velocity.z).normalized()
 	
 	var has_movement = target_speed > start_move 
 	var target_direction = Vector3(movement_direction.x, 0.0, movement_direction.y)
 	
-	# Calculate the direction change, used to make angle turn more smooth
+	# Calculate the direction change.
 	var angle_change = 0.0
 	if previous_movement_direction.length() > start_move and target_direction.length() > start_move:
 		angle_change = previous_movement_direction.angle_to(target_direction)
