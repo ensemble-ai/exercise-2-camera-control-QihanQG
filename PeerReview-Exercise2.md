@@ -111,8 +111,10 @@ ___
 ___
 #### Justification ##### 
 Overall functions perfectly as described. The one smallest issue I could find is that when boosting on the outer edges the vessel would be pushed back to the middle between the out and inner boxes, however everything else works flawlessly. The 2 boxes are drawn as they should, and the camera only moves when the vessel exits the inner box. Additionally the student uses the push ratio in a much simpler way than I initially integrated it into my own project, and just simply applies it to move_speed.x and move_speed.z if it's touching the border.
-https://github.com/ensemble-ai/exercise-2-camera-control-QihanQG/blob/952c02a206c9389f93c01036924bd95568edc5ca/Obscura/scripts/pushzone.gd#L76C4-L76C38
+https://github.com/ensemble-ai/exercise-2-camera-control-QihanQG/blob/e764f058fe11b03e73a7256ede8059bfeaa2614f/Obscura/scripts/pushzone.gd#L76
 Otherwise its just applied to the move_speed variable as a whole which is quite intuitive!
+One small note I did notice is that the student is taking variables for box width and height and inner box width and height as variables and using them as the standard instead of the corner variables assigned, however when testing inputting x and y coordinates also functions perfectly in drawing the boxes
+https://github.com/ensemble-ai/exercise-2-camera-control-QihanQG/blob/e764f058fe11b03e73a7256ede8059bfeaa2614f/Obscura/scripts/pushzone.gd#L6-L10
 ___
 # Code Style #
 
@@ -130,6 +132,10 @@ Please refer to the first code review template on how to do a permalink.
 
 
 #### Style Guide Infractions ####
+https://github.com/ensemble-ai/exercise-2-camera-control-QihanQG/blob/e764f058fe11b03e73a7256ede8059bfeaa2614f/Obscura/scripts/camera_controllers/push_box.gd#L1
+Here the student incorrectly uses snake case for a class name when traditionally we are supposed to use pascal case for titles, so it should be "TargetLock"
+Other than this the student had virtually no infractions. The only other small error if you could even call it that, is that the Postition Lock Camera's script is called push_box.gd and is the only script in the cameracontroller file within scripts, while every other camera script is located just within scripts/
+Other than this there were no other noticable mistakes that I could find.
 
 #### Style Guide Exemplars ####
 
@@ -141,14 +147,14 @@ ___
 # Best Practices #
 
 ### Description ###
-
-If the student has followed best practices then feel free to point at these code segments as examplars. 
-
-If the student has breached the best practices and has done something that should be noted, please add the infraction.
-
-
-This should be similar to the Code Style justification.
+Overall this student wrote inceridbly clean and functioning code! I found it very hard to find infractions since everything was written so well!
 
 #### Best Practices Infractions ####
+Besides that one small errors found in that first stage student adheres to all of the godot style guide from what I found. As a completely personal preference, I think some scripts could use a couple extra coments to help readability, but even so almost every functionality is very well documented and explained. One part that perticular shows how well explained this code is in the following
+https://github.com/ensemble-ai/exercise-2-camera-control-QihanQG/blob/e764f058fe11b03e73a7256ede8059bfeaa2614f/Obscura/scripts/pushzone.gd#L95
+Where the student helps mention this if statement isnt actively being used, but still shows an initial appraoch on tackling this stage of the project. Overall very strong practices and even helped me see some holes in my own project.
 
 #### Best Practices Exemplars ####
+https://github.com/ensemble-ai/exercise-2-camera-control-QihanQG/blob/e764f058fe11b03e73a7256ede8059bfeaa2614f/Obscura/scripts/camera_lead.gd#L13-L17
+I think the amount of description on these comments were a great example of some of the best practices from this student. Variables like camera_drag can be somewhat tricky to understand at a first glance but the addition of a comment talking about how heavy it makes the camera makes perfect sense to anyone even outside of programming!
+Consistent use of commenting like this is what helps makes code much easier to read and I found it extremely helpful.
