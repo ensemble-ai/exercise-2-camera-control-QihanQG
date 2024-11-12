@@ -110,7 +110,9 @@ ___
 
 ___
 #### Justification ##### 
-Overall functions perfectly as described. The one smallest issue I could find is that when boosting on the outer edges the vessel would be pushed back to the middle between the out and inner boxes, however everything else works flawlessly. The 2 boxes are drawn as they should, and the camera only moves when the vessel exits the inner box. Additionally the student uses the push ratio in a much simpler way than I initially integrated it into my own project, and just simply applies it to move_speed.x and move_speed.z if it's touching the border. Otherwise its just applied to the move_speed variable as a whole which is quite intuitive!
+Overall functions perfectly as described. The one smallest issue I could find is that when boosting on the outer edges the vessel would be pushed back to the middle between the out and inner boxes, however everything else works flawlessly. The 2 boxes are drawn as they should, and the camera only moves when the vessel exits the inner box. Additionally the student uses the push ratio in a much simpler way than I initially integrated it into my own project, and just simply applies it to move_speed.x and move_speed.z if it's touching the border.
+https://github.com/ensemble-ai/exercise-2-camera-control-QihanQG/blob/952c02a206c9389f93c01036924bd95568edc5ca/Obscura/scripts/pushzone.gd#L76C4-L76C38
+Otherwise its just applied to the move_speed variable as a whole which is quite intuitive!
 ___
 # Code Style #
 
